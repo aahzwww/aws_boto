@@ -1,7 +1,7 @@
 # Support Stop Start
 
 //manual steps start
-
+//if you have already done the install from https://github.com/aahzwww/aws_boto jump to "mkdir ~/scripts
 - sudo yum install -y gcc
 - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 - python get-pip.py --user
@@ -10,6 +10,7 @@
 - pip install croniter --user
 - pip install boto --user
 - pip install boto3 --user
+
 - mkdir ~/scripts/
 - cd scripts
 
