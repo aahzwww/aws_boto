@@ -11,8 +11,8 @@
 - pip install boto --user
 - pip install boto3 --user
 
-wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/start_db_instance.py 
-wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/start_ec2_instance.py
-wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/status_ec2_rds_support.py 
-wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/stop_db_instance.py
-wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/stop_ec2_instance.py
+- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/start_db_instance.py 
+- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/start_ec2_instance.py
+- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/status_ec2_rds_support.py 
+- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/stop_db_instance.py
+- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/stop_ec2_instance.py
