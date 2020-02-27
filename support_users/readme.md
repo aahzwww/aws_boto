@@ -10,6 +10,8 @@
 - pip install croniter --user
 - pip install boto --user
 - pip install boto3 --user
+- mkdir ~/scripts/
+- cd scripts
 
 - wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/start_db_instance.py 
 - wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/start_ec2_instance.py
