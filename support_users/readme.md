@@ -35,3 +35,4 @@ support ALL=(ec2-user) NOPASSWD:/home/ec2-user/scripts/stop_db_instance.py
 
 support ALL=(ec2-user) NOPASSWD:/home/ec2-user/scripts/status_ec2_rds_support.py
 
+- add tag to support instance Tag name = Support Tag value = active
