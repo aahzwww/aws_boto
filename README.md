@@ -3,7 +3,9 @@
 
 
 
-ec2_operator.py  rds_operator.py  - script called by cron to start/stop instances with the auto:start/stop tag, ran via cron.
+ec2_operator.py  rds_operator.py  - script called by cron to start/stop instances with the auto:start/stop tag, ran via cron. (these are the scripts installed by the steps bellow)
+
+# optional scripts
 
 ec2_list_autostop_instances.py  rds_list_autostop_instances.py  - lists all instance with auto:stop tag.
 
