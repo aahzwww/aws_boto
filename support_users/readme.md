@@ -23,6 +23,7 @@
 - sudo /etc/sudoer
 - sudo vi /etc/sudoers.d/support_access
 - add the following 
+
 support ALL=(ec2-user) NOPASSWD:/home/ec2-user/scripts/start_ec2_instance.py
 
 support ALL=(ec2-user) NOPASSWD:/home/ec2-user/scripts/start_db_instance.py
