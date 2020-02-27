@@ -21,8 +21,7 @@
 - wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/stop_ec2_instance.py
 
 - chmod +x *.py
-- adduser support
-- sudo /etc/sudoer
+- sudo adduser support
 - sudo vi /etc/sudoers.d/support_access
 - add the following 
 
