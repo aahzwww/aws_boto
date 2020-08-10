@@ -24,7 +24,7 @@ auto start/stop install instructions [copied and expaneded on from Shing Chen's 
 - Add a role name. (used when creating the ec2 instance)
 - On the next screen, select AWS Service Roles and then Amazon EC2.
 - On the next screen, select Custom Policy.
-- Type an arbitrary name to the Policy Name field.
+- Type a name in the Policy Name field.
 - Paste the following JSON block to the Policy Document field to indicate the IAM role is allowed to perform describe instances, start instances and stop instances action. 
 
 {
