@@ -51,11 +51,16 @@ auto start/stop install instructions [copied and expaneded on from Shing Chen's 
 
 - Review the role information and click Create Role to finish.
 - Provision a micro EC2 Amazon Linux AMI setting the AMI role to the one created above
+
+// scripted install steps start
+
 - wget https://raw.githubusercontent.com/aahzwww/aws_boto/master/install_start-stop.sh
 - chmod +x install_start-stop.sh
 - ./install_start-stop.sh
 
-or manually do it with the steps below
+// scripted install steps stop
+
+or manually install with the steps below
 
 //manual steps start
 
