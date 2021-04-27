@@ -69,7 +69,7 @@ wget https://raw.githubusercontent.com/aahzwww/aws_boto/master/ec2_operator.py
 - create rds_operator.py in /home/ec2-user/
 wget https://raw.githubusercontent.com/aahzwww/aws_boto/master/rds_operator.py
 - sudo yum install -y gcc
-- curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+- curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
 - python get-pip.py --user
 - export PATH=~/.local/bin/pip:$PATH
 - pip install --user --upgrade awscli
