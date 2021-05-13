@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import boto.rds
 import boto3
@@ -28,15 +28,15 @@ for region in boto.rds.regions():
             if stopping=="FALSE":
         
 
-                print region.name
-                print resp['DBName']
-                print resp['DBInstanceIdentifier']
-                print resp['DBInstanceStatus']
-                print resp['Endpoint']['Address']
-                print
+                print(region.name)
+                print(resp['DBName'])
+                print(resp['DBInstanceIdentifier'])
+                print(resp['DBInstanceStatus'])
+                print(resp['Endpoint']['Address'])
+                print()
 
     except Exception as e:
-        print 'Exception error in %s: %s' % (region.name, e.message)
+        print('Exception error in %s: %s' % (region.name, e))
 
 
 

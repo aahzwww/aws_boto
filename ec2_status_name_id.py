@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import sys
 import boto.ec2
@@ -24,25 +24,25 @@ for region in boto.ec2.regions():
             name = inst.tags['Name']
             if Single == 'Y' :
               if nameIn == name :  
-                print region
+                print(region)
 
                 name = inst.tags['Name']
-                print name
-                print inst.state
-                print inst.id
-                print
+                print(name)
+                print(inst.state)
+                print(inst.id)
+                print()
 
             else :
 
-              print region
+              print(region)
 
               name = inst.tags['Name']
-              print name
-              print inst.state
-              print inst.id
-              print
+              print(name)
+              print(inst.state)
+              print(inst.id)
+              print()
 
 
   # most likely will get exception on new beta region and gov cloud
     except Exception as e:
-      print 'Exception error in %s: %s' % (region.name, e.message)
+      print('Exception error in %s: %s' % (region.name, e))

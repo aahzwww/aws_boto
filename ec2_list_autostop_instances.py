@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import subprocess
 import boto.ec2
@@ -18,10 +18,10 @@ for region in boto.ec2.regions():
         for inst in res.instances:
           name = inst.tags['auto:stop'] if 'auto:stop' in inst.tags else None
           if inst.id != thisid and name != None:
-            print inst.id
-            print inst.tags['Name']
-            print
+            print(inst.id)
+            print(inst.tags['Name'])
+            print()
   # most likely will get exception on new beta region and gov cloud
     except Exception as e:
-      print 'Exception error in %s: %s' % (region.name, e.message)
+      print('Exception error in %s: %s' % (region.name, e))
 

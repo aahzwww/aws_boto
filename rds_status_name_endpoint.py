@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 
 import boto.rds
@@ -17,10 +17,9 @@ for region in boto.rds.regions():
 
           for db in dbs:
 
-            print region.name
-
-            print db.status
-            print db.endpoint
-            print 
+            print(region.name)
+            print(db.status)
+            print(db.endpoint)
+            print()
       except Exception as e:
-        print 'Exception error in %s: %s' % (region.name, e.message)
+        print('Exception error in %s: %s' % (region.name, e))

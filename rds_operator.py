@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import boto.rds
 import croniter
 import datetime
@@ -28,40 +28,40 @@ now = datetime.datetime.now()
 
 for region in boto.rds.regions():
 
-  if region.name != 'cn-north-1' and region.name != 'us-gov-west-1' :
+    if region.name != 'cn-north-1' and region.name != 'us-gov-west-1' :
  
 
-    try:
-        client = boto3.client('rds', region.name)
-        response = client.describe_db_instances()
-        start_list = []
-        stop_list = []
+        try:
+            client = boto3.client('rds', region.name)
+            response = client.describe_db_instances()
+            start_list = []
+            stop_list = []
 
-        for resp in response['DBInstances']:
-            db_instance_arn = resp['DBInstanceArn']
-            tag_list = client.list_tags_for_resource(ResourceName=db_instance_arn)
+            for resp in response['DBInstances']:
+                db_instance_arn = resp['DBInstanceArn']
+                tag_list = client.list_tags_for_resource(ResourceName=db_instance_arn)
             
-            for tags in tag_list['TagList']:            
+                for tags in tag_list['TagList']:            
                 
-                if tags['Key'] == 'auto:stop':
-                    tag_value = tags['Value']
-                    stop_sched = string.replace(tag_value,"@","*",6)
+                    if tags['Key'] == 'auto:stop':
+                        tag_value = tags['Value']
+                        stop_sched = str.replace(tag_value,"@","*",6)
                     
-                    #check status is running
-                    if resp['DBInstanceStatus'] == 'available' and time_to_action(stop_sched, now, 11 * -60):
-                        instanceid = resp['DBInstanceIdentifier']
-                        client.stop_db_instance(DBInstanceIdentifier=instanceid)
+                        #check status is running
+                        if resp['DBInstanceStatus'] == 'available' and time_to_action(stop_sched, now, 11 * -60):
+                            instanceid = resp['DBInstanceIdentifier']
+                            client.stop_db_instance(DBInstanceIdentifier=instanceid)
 
-                elif tags['Key'] == 'auto:start':
-                    tag_value = tags['Value']
-                    start_sched = string.replace(tag_value,"@","*",6)
+                    elif tags['Key'] == 'auto:start':
+                        tag_value = tags['Value']
+                        start_sched = str.replace(tag_value,"@","*",6)
 
-                    #check status is running
-                    if resp['DBInstanceStatus'] == 'stopped' and time_to_action(start_sched, now, 11 * 60):
-                        instanceid = resp['DBInstanceIdentifier']
-                        client.start_db_instance(DBInstanceIdentifier=instanceid)
+                        #check status is running
+                        if resp['DBInstanceStatus'] == 'stopped' and time_to_action(start_sched, now, 11 * 60):
+                            instanceid = resp['DBInstanceIdentifier']
+                            client.start_db_instance(DBInstanceIdentifier=instanceid)
 
  
 
-    except Exception as e:
-        print 'Exception error in %s: %s' % (region.name, e.message)
+        except Exception as e:
+            print ('Exception error in %s: %s' % (region.name, e))
