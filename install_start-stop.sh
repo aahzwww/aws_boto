@@ -2,7 +2,7 @@
 
 
 sudo yum install -y gcc
-curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
+curl https://bootstrap.pypa.io/pip/get-pip.py -o get-pip.py
 python get-pip.py --user
 export PATH=~/.local/bin/pip:$PATH
 pip install --user --upgrade awscli
@@ -17,5 +17,5 @@ chown ec2-user:ec2-user $OPERATOR
 chown ec2-user:ec2-user $OPERATOR2
 chmod 744 $OPERATOR
 chmod 744 $OPERATOR2
-echo "*/5 * * * * ec2-user python $OPERATOR" | sudo tee -a /etc/crontab
-echo "*/5 * * * * ec2-user python $OPERATOR2" | sudo tee -a /etc/crontab
+echo "*/5 * * * * ec2-user python3 $OPERATOR" | sudo tee -a /etc/crontab
+echo "*/5 * * * * ec2-user python3 $OPERATOR2" | sudo tee -a /etc/crontab
