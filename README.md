@@ -69,7 +69,7 @@ wget https://raw.githubusercontent.com/aahzwww/aws_boto/master/ec2_operator.py
 - create rds_operator.py in /home/ec2-user/
 wget https://raw.githubusercontent.com/aahzwww/aws_boto/master/rds_operator.py
 - sudo yum install -y gcc
-- curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
+- curl https://bootstrap.pypa.io/pip/get-pip.py -o get-pip.py
 - python get-pip.py --user
 - export PATH=~/.local/bin/pip:$PATH
 - pip install --user --upgrade awscli
@@ -78,10 +78,10 @@ wget https://raw.githubusercontent.com/aahzwww/aws_boto/master/rds_operator.py
 - pip install boto3 --user
 - chown ec2-user:ec2-user /home/ec2-user/ec2_operator.py
 - chmod 744 /home/ec2-user/ec2_operator.py
-- add "*/5 * * * * ec2-user python /home/ec2-user/ec2_operator.py" to /etc/crontab or the users crontab
+- add "*/5 * * * * ec2-user python3 /home/ec2-user/ec2_operator.py" to /etc/crontab or the users crontab
 - chown ec2-user:ec2-user /home/ec2-user/rds_operator.py
 - chmod 744 /home/ec2-user/rds_operator.py
-- add "*/5 * * * * ec2-user python /home/ec2-user/rds_operator.py" to /etc/crontab or the users crontab
+- add "*/5 * * * * ec2-user python3 /home/ec2-user/rds_operator.py" to /etc/crontab or the users crontab
 
 //manual steps end
 
