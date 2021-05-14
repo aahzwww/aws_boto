@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import boto3
 import sys
@@ -28,7 +28,7 @@ for region in (boto3.session.Session().get_available_regions('ec2')):
     
         # most likely will get exception on new beta region and gov cloud
         except Exception as e:
-            print 'Exception error in %s: %s' % (region, e.message)
+            print('Exception error in %s: %s' % (region, e))
 
 if instance_found == 'True':
     #raw_input will have to just input for version 3
@@ -41,7 +41,7 @@ if instance_found == 'True':
 
             client.stop_instances(InstanceIds=[instanceid])
         except Exception as e:
-            print( 'Exception error in %s: %s' % (instanceid, e.message))
+            print( 'Exception error in %s: %s' % (instanceid, e))
     else:
         print("ID or region missing")
 else:

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import boto3
 
@@ -25,7 +25,7 @@ for region in (boto3.session.Session().get_available_regions('rds')):
                         print('==========')
 
       except Exception as e:
-        print 'Exception error in %s: %s' % (region, e.message)
+        print ('Exception error in %s: %s' % (region, e))
 
 
 if instance_found == 'True':
@@ -39,7 +39,7 @@ if instance_found == 'True':
 
             client.stop_db_instance(DBInstanceIdentifier=instanceid)
         except Exception as e:
-            print( 'Exception error in %s: %s' % (instanceid, e.message))
+            print( 'Exception error in %s: %s' % (instanceid, e))
     else:
         print("ID or region missing")
 else:

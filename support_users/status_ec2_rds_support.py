@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import boto3
 
@@ -44,5 +44,5 @@ for region in (boto3.session.Session().get_available_regions('ec2')):
                         print('==========')
 
         except Exception as e:
-            print 'Exception error in %s: %s' % (region, e.message)
+            print('Exception error in %s: %s' % (region, e))
 
