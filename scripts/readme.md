@@ -14,11 +14,11 @@
 - mkdir ~/scripts/
 - cd scripts
 
-- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/start_db_instance.py 
-- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/start_ec2_instance.py
-- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/status_ec2_rds_support.py 
-- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/stop_db_instance.py
-- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/support_users/stop_ec2_instance.py
+- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/scripts/start_db_instance.py 
+- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/scripts/start_ec2_instance.py
+- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/scripts/status_ec2_rds_support.py 
+- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/scripts/stop_db_instance.py
+- wget  https://raw.githubusercontent.com/aahzwww/aws_boto/master/scripts/stop_ec2_instance.py
 
 - chmod +x *.py
 - sudo adduser support
