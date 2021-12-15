@@ -1,27 +1,32 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 
-import subprocess
-import boto.ec2
+import botocore
+import boto3
 
-p = subprocess.Popen("curl -s http://169.254.169.254/latest/meta-data/instance-id/", stdout=subprocess.PIPE, shell=True)
-(output, err) = p.communicate()
-thisid = output
-
-for region in boto.ec2.regions():
-  if region.name != 'cn-north-1' and region.name != 'us-gov-west-1' :
+for region in boto3.session.Session().get_available_regions('ec2'):
 
     try:
-      conn=boto.ec2.connect_to_region(region.name)
-      reservations = conn.get_all_instances()
+        client = boto3.client('ec2', region)
+        instances = client.describe_instances()
 
-      for res in reservations:
-        for inst in res.instances:
-          name = inst.tags['auto:stop'] if 'auto:stop' in inst.tags else None
-          if inst.id != thisid and name != None:
-            print(inst.id)
-            print(inst.tags['Name'])
-            print()
-  # most likely will get exception on new beta region and gov cloud
+        for reservation in instances['Reservations']:
+            for instance in reservation['Instances']:
+                if 'Tags' in instance:
+                    for tag in instance['Tags']:
+                        #if tag['Key'] == 'Name':
+                        if tag['Key'] == 'auto:stop':
+                            print ( instance['InstanceId'],tag['Value'])
+                            print ('============')
+
+    except botocore.exceptions.ClientError as e:
+        if e.response['Error']['Code'] == 'AuthFailure':
+            continue
+        elif e.response['Error']['Code'] == 'InvalidClientTokenId':
+            continue
+        else:
+            print ('Exception error in %s: %s' % (region, e))
+
     except Exception as e:
-      print('Exception error in %s: %s' % (region.name, e))
+      print ('Exception error in %s: %s' % (region, e))
+
 

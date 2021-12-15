@@ -1,16 +1,13 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 
-import boto.rds
+import botocore
 import boto3
 
 
-for region in boto.rds.regions():
-
-  if region.name != 'cn-north-1' and region.name != 'us-gov-west-1' :
-
+for region in boto3.session.Session().get_available_regions('rds'):
 
     try:
-        client = boto3.client('rds', region.name)
+        client = boto3.client('rds', region)
         response = client.describe_db_instances()
 
         for resp in response['DBInstances']:
@@ -20,15 +17,21 @@ for region in boto.rds.regions():
             for tags in tag_list['TagList']:
 
                 if tags['Key'] == 'auto:stop': 
-                    print(region.name)
-                    print(resp['DBName'])
+                    print(region)
                     print(resp['DBInstanceIdentifier'])
                     print(resp['DBInstanceStatus'])
                     print(resp['Endpoint']['Address'])
-                    print()
+                    print('============')
+
+    except botocore.exceptions.ClientError as e:
+        if e.response['Error']['Code'] == 'AuthFailure':
+            continue
+        elif e.response['Error']['Code'] == 'InvalidClientTokenId':
+            continue
+        else:
+            print ('Exception error in %s: %s' % (region, e))
 
     except Exception as e:
-        print('Exception error in %s: %s' % (region.name, e))
-
+      print ('Exception error in %s: %s' % (region, e))
 
 

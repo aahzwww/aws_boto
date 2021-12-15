@@ -1,14 +1,13 @@
-#!/usr/bin/python3
-
+#!/usr/bin/env python3
+import botocore
 import boto3
 
 
 
 instance_found = 'False'
-for region in (boto3.session.Session().get_available_regions('rds')):
-  #if region != 'cn-north-1' and region != 'us-gov-west-1' :
-  if region != 'us-gov-west-1' and region != 'me-south-1' and region != 'ap-east-1':
-      try:
+for region in boto3.session.Session().get_available_regions('rds'):
+
+    try:
         client = boto3.client('rds', region)
         response = client.describe_db_instances()
 
@@ -24,14 +23,20 @@ for region in (boto3.session.Session().get_available_regions('rds')):
                         print('Instance ID : ' + resp['DBInstanceIdentifier'])
                         print('==========')
 
-      except Exception as e:
-        print( 'Exception error in %s: %s' % (region, e))
+    except botocore.exceptions.ClientError as e:
+        if e.response['Error']['Code'] == 'AuthFailure':
+            continue
+        elif e.response['Error']['Code'] == 'InvalidClientTokenId':
+            continue
+        else:
+            print ('Exception error in %s: %s' % (region, e))
 
+    except Exception as e:
+      print ('Exception error in %s: %s' % (region, e))
 
 if instance_found == 'True':
-    #raw_input will have to just input for version 3
-    instance_region = raw_input('Enter region of the instance to start...:')
-    instanceid = raw_input('Enter ID of the instance to start...:')
+    instance_region = input('Enter region of the instance to start...:')
+    instanceid = input('Enter ID of the instance to start...:')
     if instanceid and instance_region:
         try:
             client = boto3.client('rds', instance_region)
