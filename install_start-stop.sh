@@ -3,7 +3,7 @@
 
 sudo yum install -y gcc
 curl https://bootstrap.pypa.io/pip/get-pip.py -o get-pip.py
-python get-pip.py --user
+python3 get-pip.py --user
 export PATH=~/.local/bin/pip:$PATH
 pip install --user --upgrade awscli
 pip install croniter --user
