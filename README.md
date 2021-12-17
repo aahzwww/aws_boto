@@ -40,7 +40,8 @@ auto start/stop install instructions [copied and expaneded on from Shing Chen's 
                 "rds:DescribeDBInstances",
                 "ec2:StopInstances",
                 "rds:StopDBInstance",
-                "rds:StartDBInstance"
+                "rds:StartDBInstance",
+		"rds:DescribeEvents"
             ],
             "Resource": "*"
         }
